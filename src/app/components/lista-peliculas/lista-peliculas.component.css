@@ -1,0 +1,7 @@
+.mat-spinner-color::ng-deep circle{
+  stroke: #d3d3d3;
+}
+
+.mat-mdc-unelevated-button.mat-primary{
+  background-color: rgba(0, 0, 0, 0.6)!important;
+}

@@ -1,0 +1,49 @@
+<!--Cuando termina de consumir la api-->
+<div *ngIf="!cargandoDatos">
+  <div
+    *ngIf="listaPeliculas.length > 0; then conResultados; else sinResultados"
+  ></div>
+  <!--Resultado con datos-->
+  <ng-template #conResultados>
+    <div class="row m-0 p-3">
+      <div
+        *ngFor="let item of listaPeliculas"
+        class="col-md-3 col-sm-6 col-12 px-2 py-2"
+      >
+        <mat-card
+          appearance="outlined"
+          class="my-2 h-100 d-flex justify-content-between"
+        >
+          <mat-card-header class="pb-2" style="background-color: #d3d3d3">
+            <mat-card-title>{{ item.title }}</mat-card-title>
+            <mat-card-subtitle>{{ item.genre }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p class="my-2">
+              {{ item.description }}
+            </p>
+          </mat-card-content>
+          <mat-card-actions class="d-flex justify-content-end">
+            <button mat-button>Ver más</button>
+            <button mat-flat-button color="primary">Seleccionar</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </ng-template>
+
+  <!--Resultado sin datos-->
+  <ng-template #sinResultados>
+    <div class="d-flex justify-content-center">
+      <h2>No se encontraron resultados</h2>
+    </div>
+  </ng-template>
+</div>
+
+<!--Cuando empieza a consumir la api-->
+<div *ngIf="cargandoDatos" class="d-flex justify-content-center">
+  <mat-spinner
+    class="mat-spinner-color"
+    style="width: 130px; margin-top: 150px"
+  ></mat-spinner>
+</div>
